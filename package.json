@@ -1,0 +1,19 @@
+{
+  "name": "scratch-viewer",
+  "version": "1.0.0",
+  "description": "A way to view unpublished Scratch projects",
+  "author": "Zak Kolar",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "forkphorus": "github:forkphorus/forkphorus",
+    "nuxt": "^2.0.0",
+    "tachyons": "^4.11.1"
+  },
+  "devDependencies": {}
+}

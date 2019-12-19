@@ -1,0 +1,3 @@
+[submodule "static/forkphorus"]
+	path = static/forkphorus
+	url = git@github.com:zakkolar/forkphorus.git
