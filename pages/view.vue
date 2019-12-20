@@ -4,7 +4,7 @@
 
         <h1 class="f1 pa0 ma0 tc">{{title}}</h1>
         <div id="projectEmbed" class="center tc">
-          <iframe v-bind:src="'/forkphorus/embed.html?id='+project+'&auto-start='+autoStart+'&light-content=false&w='+baseWidth+'&h='+baseHeight" v-bind:width="width" allowfullscreen="true" allowtransparency="true" class="bn forkphorus-embed" v-bind:height="height"></iframe>
+          <iframe v-if="project" v-bind:src="'/forkphorus/embed.html?id='+project+'&auto-start='+autoStart+'&light-content=false&w='+baseWidth+'&h='+baseHeight" v-bind:width="width" allowfullscreen="true" allowtransparency="true" class="bn forkphorus-embed" v-bind:height="height"></iframe>
         </div>
         <p v-if="caption" class="measure center lh-copy f4 ba pa2 bg-black-05 b--black-20">{{caption}}</p>
 
@@ -23,26 +23,21 @@ export default {
   },
   data() {
     return {
-      caption: this.$route.query.caption,
-      title: this.$route.query.title || "Scratch Project Viewer",
-      baseWidth: parseInt(this.$route.query.w) || 480,
-      baseHeight: parseInt(this.$route.query.h) || 360,
-      hasUI: this.$route.query.ui !== 'false',
-      autoStart: this.$route.query['auto-start'] !== 'false'
+      caption: null,
+      title: 'Scratch Project Viewer',
+      baseWidth: 480,
+      baseHeight: 360,
+      hasUI: null,
+      autoStart: null,
+      project: null,
     }
   },
 
+  mounted(){
+    this.getUrlData();
+  },
+
   computed: {
-    project() {
-      let project = this.$route.query.project;
-      if (this.isURL(project)) {
-        var parts = project.split('/');
-        if (parts.length >= 5) {
-          return parts[4];
-        }
-      }
-      return project;
-    },
     width() {
       if (this.hasUI) {
         // include enough for controls and the player border
@@ -68,6 +63,25 @@ export default {
         '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
         '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
       return !!pattern.test(str);
+    },
+    getUrlData(){
+
+        this.caption = this.$route.query.caption || null;
+        this.title = this.$route.query.title || "Scratch Project Viewer";
+        this.baseWidth =  parseInt(this.$route.query.w) || this.baseWidth;
+        this.baseHeight =  parseInt(this.$route.query.h) || this.baseHeight;
+        this.hasUI =  this.$route.query.ui !== 'false';
+        this.autoStart =  this.$route.query['auto-start'] !== 'false';
+
+        // project
+        let project = this.$route.query.project;
+        this.project = project;
+        if (this.isURL(project)) {
+          var parts = project.split('/');
+          if (parts.length >= 5) {
+            this.project = parts[4];
+          }
+        }
     }
   }
 
