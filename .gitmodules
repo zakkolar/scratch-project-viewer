@@ -1,3 +1,6 @@
 [submodule "static/forkphorus"]
 	path = static/forkphorus
-	url = https://github.com/zakkolar/forkphorus.git
+	url = ../forkphorus.git
+[submodule "static/sb-downloader"]
+	path = static/sb-downloader
+	url = ../sb-downloader.git
