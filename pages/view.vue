@@ -10,17 +10,19 @@
             </div>
           </div>
           <p v-if="caption" class="measure center lh-copy f4 ba pa2 bg-black-05 b--black-20">{{caption}}</p>
-          <p v-if="showDownload && downloadData && !downloadError" class="measure center lh-copy f4 pa2 tc">
-            <a :href="downloadData" v-if="downloadData" :download="downloadName" class="no-underline bg-green ph3 pv2 white grow">Download project</a>
-          </p>
-          <div v-if="!downloadData && !downloadError" class="center measure">
-            <div class="bg-washed-green ba b--dark-green f6 lh-copy overflow-y-hidden">
-              <div class="bg-green shadow-1 overflow-y-hidden ph3 pv2 white" v-bind:style="{width: loadProgress +'%'}" >Exporting project...</div>
+          <div v-if="showDownload">
+            <p v-if="downloadData && !downloadError" class="measure center lh-copy f4 pa2 tc">
+              <a :href="downloadData" v-if="downloadData" :download="downloadName" class="no-underline bg-green ph3 pv2 white grow">Download project</a>
+            </p>
+            <div v-if="!downloadData && !downloadError" class="center measure">
+              <div class="bg-washed-green ba b--dark-green f6 lh-copy overflow-y-hidden">
+                <div class="bg-green shadow-1 overflow-y-hidden ph3 pv2 white" v-bind:style="{width: loadProgress +'%'}" >Exporting project...</div>
+              </div>
             </div>
+            <p v-if="downloadError" class="measure center lh-copy f4 pa2 tc ba pa2 bg-washed-red b--dark-red dark-red ma0">
+              Error downloading project
+            </p>
           </div>
-        <p v-if="showDownload && downloadError" class="measure center lh-copy f4 pa2 tc ba pa2 bg-washed-red b--dark-red dark-red ma0">
-          Error downloading project
-        </p>
         </div>
     </div>
 
