@@ -4,6 +4,9 @@ export default {
   /*
   ** Headers of the page
   */
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+  },
   head: {
     title: 'Scratch Project Viewer',
     meta: [
@@ -29,6 +32,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/vue-clipboard2'
   ],
   /*
   ** Nuxt.js dev-modules
