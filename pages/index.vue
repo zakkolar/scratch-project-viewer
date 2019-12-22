@@ -37,7 +37,7 @@ export default {
   },
   data(){
     return {
-      baseUrl: process.env.baseUrl,
+      baseUrl: process.env.BASE_URL,
       projectID: '10128067'
     };
   }
