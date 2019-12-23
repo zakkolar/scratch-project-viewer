@@ -33,6 +33,8 @@
 
   import SBDL from "../static/sb-downloader/loader";
 
+  import defaultSettings from "../resources/default-settings";
+
 export default {
   head(){
     return {
@@ -45,7 +47,7 @@ export default {
       title: 'Scratch Project Viewer',
       baseWidth: 480,
       baseHeight: 360,
-      hasUI: null,
+      ui: null,
       autoStart: null,
       project: null,
       downloadData: null,
@@ -63,14 +65,14 @@ export default {
 
   computed: {
     width() {
-      if (this.hasUI) {
+      if (this.ui) {
         // include enough for controls and the player border
         return this.baseWidth + 2;
       }
       return this.baseWidth;
     },
     height() {
-      if (this.hasUI) {
+      if (this.ui) {
         // include enough for controls and the player border
         return this.baseHeight + 33;
       }
@@ -98,13 +100,28 @@ export default {
     },
     getUrlData() {
 
-      this.caption = this.$route.query.caption || null;
-      this.title = this.$route.query.title || "Scratch Project Viewer";
-      this.baseWidth = parseInt(this.$route.query.w) || this.baseWidth;
-      this.baseHeight = parseInt(this.$route.query.h) || this.baseHeight;
-      this.hasUI = this.$route.query.ui !== 'false';
-      this.autoStart = this.$route.query['auto-start'] !== 'false';
-      this.showDownload = this.$route.query['show-download'] !== 'false';
+
+
+      this.caption = this.$route.query.caption || defaultSettings.caption;
+      this.title = this.$route.query.title || defaultSettings.title;
+      this.baseWidth = parseInt(this.$route.query.w) || defaultSettings.w;
+      this.baseHeight = parseInt(this.$route.query.h) || defaultSettings.h;
+
+      this.ui = defaultSettings.ui;
+      if(this.$route.query.ui){
+        this.ui = this.$route.query.ui !== 'false';
+      }
+
+      this.autoStart = defaultSettings.autoStart;
+      if(this.$route.query['autoStart']){
+        this.autoStart = this.$route.query['autoStart'] === 'true';
+      }
+
+      this.showDownload = defaultSettings.showDownload;
+      if(this.$route.query['showDownload']){
+        this.showDownload = this.$route.query['showDownload'] !== 'false';
+      }
+
 
       // project
       let project = this.$route.query.project;
