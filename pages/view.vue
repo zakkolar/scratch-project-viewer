@@ -34,6 +34,7 @@
   import SBDL from "../static/sb-downloader/loader";
 
   import defaultSettings from "../resources/default-settings";
+  import ExtractProjectId from "../resources/extract-project-id";
 
 export default {
   head(){
@@ -127,11 +128,13 @@ export default {
       let project = this.$route.query.project;
       this.project = project;
       if (this.isURL(project)) {
-        var parts = project.split('/');
-        if (parts.length >= 5) {
-          this.project = parts[4];
-        }
+        this.project = ExtractProjectId(project);
       }
+
+      if(!this.project){
+        this.$router.push("/");
+      }
+
       this.initDownload();
     },
     initDownload() {
