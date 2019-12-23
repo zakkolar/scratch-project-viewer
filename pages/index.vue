@@ -7,7 +7,7 @@
         <h2 class="f2 mb1">How to use</h2>
         <p class="tc">If your Scratch project URL is this:</p>
         <url-box><span class="gray">https://scratch.mit.edu/projects/</span><input type="text" v-model="projectID" placeholder="Project ID" :size="projectID.length || 'Project ID'.length" class="code bg-transparent ba b--black-30 bt-0 bl-0 br-0 b--dashed"><span class="gray">/</span></url-box>
-        <p class="f6 dark-gray tc i ma0">Click on the numbers to change the project ID to matc your project</p>
+        <p class="f6 dark-gray tc i ma0">Click on the numbers to change the project ID to match your project</p>
         <p class="tc">Then share this link:</p>
         <url-box :copy="completeUrl">{{completeUrl}}</url-box>
       </div>
@@ -37,7 +37,7 @@ export default {
   },
   data(){
     return {
-      baseUrl: process.env.BASE_URL,
+      baseUrl: process.env.baseUrl,
       projectID: '10128067'
     };
   }
