@@ -1,6 +1,6 @@
 <template>
   <div class="tl">
-    <div class="ba code b--black-20 pa2 center db ma0 nowrap overflow-x-auto f4-l f5-m f6" >
+    <div class="ba code b--black-20 pa2 center db ma0 bg-near-white nowrap overflow-x-auto f4-l f5-m f6" >
       <p class="pa0 ma0">
         <slot></slot>
       </p>
