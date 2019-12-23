@@ -8,7 +8,8 @@
         <ol class="f3">
           <li>
             <label class="f3 db mv2 mh0 pa0" for="projectURL">Paste Scratch project URL</label>
-            <url-box><debounce-input id="projectURL" element="input" type="text" v-model="projectURL" :placeholder="placeholder" class="code bg-transparent bn w-100"></debounce-input></url-box>
+            <debounce-input id="projectURL" element="input" type="text" v-model="projectURL" :class="{'b--red bg-washed-red':projectURL && !projectID}" :placeholder="placeholder" class="code w-100 ba code b--black-20 pa2 center db ma0 bg-near-white f4-l f5-m f6" ></debounce-input>
+            <p class="f6 red i" v-if="projectURL && !projectID">URL should be in the format https://scratch.mit.edu/projects/[PROJECT ID]</p>
           </li>
           <li v-if="projectID">
             <p class="f3 db mv2 mh0 pa0">Customize viewer <i class="gray f4">(optional)</i></p>
