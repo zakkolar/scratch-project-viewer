@@ -4,70 +4,73 @@
           <h1 class="f1">Scratch viewer</h1>
         </header>
         <p>This site, created from <a href="https://forkphorus.github.io/" target="_blank">forkphorus</a>, is designed to make it easy to share Scratch projects that have not been published on the Scratch platform.</p>
-        <h2 class="f2 mb1">How to use</h2>
-        <p class="tc">If your Scratch project URL is this:</p>
-        <url-box><span class="gray">https://scratch.mit.edu/projects/</span><debounce-input element="input" type="text" v-model="projectID" :placeholder="placeholder" :size="projectID.length || placeholder.length" class="code bg-transparent ba b--black-30 bt-0 bl-0 br-0 b--dashed"></debounce-input><span class="gray">/</span></url-box>
-        <p class="f6 dark-gray tc i ma0">Click on the numbers to change the project ID to match your project</p>
-        <p class="tc">Then share this link:</p>
-        <url-box :copy="completeUrl">{{completeUrl}}</url-box>
 
-        <div>
+        <ol class="f3">
+          <li>
+            <label class="f3 db mv2 mh0 pa0" for="projectURL">Paste Scratch project URL</label>
+            <url-box><debounce-input id="projectURL" element="input" type="text" v-model="projectURL" :placeholder="placeholder" class="code bg-transparent bn w-100"></debounce-input></url-box>
+          </li>
+          <li v-if="projectID">
+            <p class="f3 db mv2 mh0 pa0">Customize viewer <i class="gray f4">(optional)</i></p>
 
-        <h2 class="f2 mb2">Customize viewer</h2>
-
-        <vue-tabs>
-          <vue-tab name="Settings" :selected="true">
+            <vue-tabs class="f4-l f5">
+              <vue-tab name="Settings" :selected="true">
 
 
-            <div class="w-50-ns w-100 fl ph3">
+                <div class="w-50-ns w-100 fl ph3">
 
-              <label for="title" class="settings-label">Title</label>
-              <debounce-input id="title" element="input" class="settings-text" v-model="settings.title"></debounce-input>
+                  <label for="title" class="settings-label">Title</label>
+                  <debounce-input id="title" element="input" class="settings-text" v-model="settings.title"></debounce-input>
 
-              <label for="caption" class="settings-label">Caption</label>
-              <debounce-input id="caption" class="settings-text" element="textarea" v-model="settings.caption"></debounce-input>
-
-
-            </div>
+                  <label for="caption" class="settings-label">Caption</label>
+                  <debounce-input id="caption" class="settings-text" element="textarea" v-model="settings.caption"></debounce-input>
 
 
-            <div class="w-50-ns w-100 fl">
-
-              <div class="w-50 fl ph3">
-                <label for="width" class="settings-label">Width</label>
-                <debounce-input id="width" class="settings-text" element="input" v-model="settings.w"></debounce-input>
-              </div>
-              <div class="w-50 fl ph3">
-                <label for="height" class="settings-label">Height</label>
-                <debounce-input id="height" class="settings-text" element="input" v-model="settings.h"></debounce-input>
-              </div>
+                </div>
 
 
-              <div class="ph3">
-                <label class="settings-label">
-                  <input type="checkbox"  v-model="settings.ui"> Show controls
-                </label>
+                <div class="w-50-ns w-100 fl">
 
-                <label class="settings-label">
-                  <input type="checkbox" v-model="settings.autoStart"> Start automatically
-                </label>
-
-                <label class="settings-label">
-                  <input type="checkbox"  v-model="settings.showDownload"> Show download button
-                </label>
-              </div>
+                  <div class="w-50 fl ph3">
+                    <label for="width" class="settings-label">Width</label>
+                    <debounce-input id="width" class="settings-text" element="input" v-model="settings.w"></debounce-input>
+                  </div>
+                  <div class="w-50 fl ph3">
+                    <label for="height" class="settings-label">Height</label>
+                    <debounce-input id="height" class="settings-text" element="input" v-model="settings.h"></debounce-input>
+                  </div>
 
 
-            </div>
-          </vue-tab>
-          <vue-tab name="Preview">
-            <iframe :src="completeUrl" class="ba b--black-05 w-100" style="height:600px;"></iframe>
-          </vue-tab>
-        </vue-tabs>
+                  <div class="ph3">
+                    <label class="settings-label">
+                      <input type="checkbox"  v-model="settings.ui"> Show controls
+                    </label>
+
+                    <label class="settings-label">
+                      <input type="checkbox" v-model="settings.autoStart"> Start automatically
+                    </label>
+
+                    <label class="settings-label">
+                      <input type="checkbox"  v-model="settings.showDownload"> Show download button
+                    </label>
+                  </div>
+
+
+                </div>
+              </vue-tab>
+              <vue-tab name="Preview">
+                <iframe :src="completeUrl" class="ba b--black-05 w-100" style="height:600px;"></iframe>
+              </vue-tab>
+            </vue-tabs>
+          </li>
+          <li v-if="projectID">
+            <p class="f3 db mv2 mh0 pa0">Share this link</p>
+            <url-box :copy="completeUrl">{{completeUrl}}</url-box>
+          </li>
+        </ol>
 
 
 
-        </div>
 
 
 
@@ -83,6 +86,8 @@ import defaultSettings from "../resources/default-settings";
 import VueTab from "../components/VueTabs/VueTab";
 import VueTabs from "../components/VueTabs/VueTabs";
 
+import ExtractProjectID from "../resources/extract-project-id";
+
 export default {
   components: {
     UrlBox, DebounceInput, VueTab, VueTabs
@@ -92,7 +97,7 @@ export default {
 
       const settings = this.settings;
 
-      const params = [];
+      const params = [`project=${this.urlSafe(this.projectID)}`];
 
       for(let setting in settings){
         if(settings.hasOwnProperty(setting)){
@@ -102,9 +107,14 @@ export default {
         }
       }
 
-      params.push(`project=${this.urlSafe(this.projectID)}`);
-
       return `${this.baseUrl}/view?${params.join("&")}`;
+    },
+    projectID(){
+      if(!this.projectURL){
+        return null;
+      }
+      const id = ExtractProjectID(this.projectURL);
+      return id;
     }
   },
   head(){
@@ -120,9 +130,10 @@ export default {
   data(){
     return {
       baseUrl: process.env.baseUrl,
-      projectID: '10128067',
+      projectURL: "",
+      // projectID: '10128067',
       settings: Object.assign({},defaultSettings),
-      placeholder: 'Project ID',
+      placeholder: 'https://scratch.mit.edu/projects/10128067',
     };
   }
 }
