@@ -1,6 +1,5 @@
 <template>
-  <component :is="element" :value="value" v-on:input="debounce">
-  </component>
+  <component :is="element" :value="value" v-on:input="debounce">{{value}}</component>
 </template>
 
 <script>
