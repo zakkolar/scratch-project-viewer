@@ -26,7 +26,6 @@
                   <label for="caption" class="settings-label">Caption</label>
                   <debounce-input id="caption" class="settings-text" element="textarea" v-model="settings.caption"></debounce-input>
 
-
                 </div>
 
 
@@ -54,7 +53,28 @@
                     <label class="settings-label">
                       <input type="checkbox"  v-model="settings.showDownload"> Show download button
                     </label>
+
                   </div>
+
+
+
+
+                    <label for="backgroundColor" class="settings-label dt">
+                      <div class="dtc v-mid">
+                        <debounce-input id="backgroundColor" class="settings-color" element="input" v-model="settings.backgroundColor" type="color"></debounce-input> Background color
+                      </div>
+                    </label>
+
+
+
+
+
+                  <label for="textColor" class="settings-label">
+                    <debounce-input id="textColor" class="settings-color" element="input" v-model="settings.textColor" type="color"></debounce-input> Text color
+                  </label>
+
+
+
 
 
                 </div>
@@ -63,6 +83,7 @@
                 <iframe :src="completeUrl" class="ba b--black-05 w-100" style="height:600px;"></iframe>
               </vue-tab>
             </vue-tabs>
+            <div class="cb"></div>
           </li>
           <li v-if="projectID">
             <p class="f3 db mv2 mh0 pa0">Share this link</p>
@@ -116,7 +137,7 @@ export default {
       }
       const id = ExtractProjectID(this.projectURL);
       return id;
-    }
+    },
   },
   head(){
     return {
@@ -156,6 +177,10 @@ export default {
 
   .settings-text{
     @extend .input-reset, .ba, .b--black-20, .pa2, .mb2, .db, .w-100;
+  }
+
+  .settings-color{
+    @extend .input-reset, .bn, .h2, .w2, .pa0, .mb2, .dib;
   }
 
 </style>

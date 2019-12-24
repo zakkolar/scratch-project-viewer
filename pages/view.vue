@@ -1,5 +1,5 @@
 <template>
-  <div class="vh-100 dt w-100">
+  <div class="vh-100 dt w-100" :style="{color:textColor, background:backgroundColor}">
     <div class="dtc v-mid">
         <div v-if="project">
           <h1 class="f1 pa0 ma0 tc">{{title}}</h1>
@@ -55,6 +55,8 @@ export default {
       downloadName: null,
       showDownload: null,
       downloadError: false,
+      backgroundColor: null,
+      textColor: null,
       totalTasks: 0,
       finishedTasks: 0,
     }
@@ -105,6 +107,10 @@ export default {
 
       this.caption = this.$route.query.caption || defaultSettings.caption;
       this.title = this.$route.query.title || defaultSettings.title;
+
+      this.backgroundColor = this.$route.query.backgroundColor || defaultSettings.backgroundColor;
+      this.textColor = this.$route.query.textColor || defaultSettings.textColor;
+
       this.baseWidth = parseInt(this.$route.query.w) || defaultSettings.w;
       this.baseHeight = parseInt(this.$route.query.h) || defaultSettings.h;
 

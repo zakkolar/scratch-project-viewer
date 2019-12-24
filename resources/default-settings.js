@@ -6,4 +6,6 @@ export default {
   ui: true,
   autoStart: false,
   showDownload: true,
+  textColor: '#000000',
+  backgroundColor: '#ffffff'
 }
