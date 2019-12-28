@@ -2,7 +2,7 @@
   <div class="vh-100 dt w-100" :style="{color:textColor, background:backgroundColor}">
     <div class="dtc v-mid">
         <div v-if="project">
-          <h1 class="f1 pa0 ma0 tc">{{title}}</h1>
+          <h1 class="f1 pa0 ma0 tc" v-if="title">{{title}}</h1>
           <div id="projectEmbed" class="center tc">
             <iframe v-if="project" v-bind:src="'/forkphorus/embed.html?id='+project+'&auto-start='+autoStart+'&light-content=false&w='+baseWidth+'&h='+baseHeight" v-bind:width="width" allowfullscreen="true" allowtransparency="true" class="bn forkphorus-embed" v-bind:height="height"></iframe>
             <div v-else>
