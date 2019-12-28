@@ -37,6 +37,7 @@
   import ExtractProjectId from "../resources/extract-project-id";
 
 export default {
+  layout:'viewer',
   head(){
     return {
       title: this.title || 'Scratch Project Viewer'

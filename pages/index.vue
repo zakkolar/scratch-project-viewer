@@ -1,8 +1,8 @@
 <template>
-      <div class="center lh-copy f4-l f5 main">
-        <header class="tc">
-          <h1 class="f1">Scratch viewer</h1>
-        </header>
+      <div>
+
+          <h1 class="f1 tc">Scratch viewer</h1>
+
         <p>This site, created from <a href="https://forkphorus.github.io/" target="_blank">forkphorus</a>, is designed to make it easy to share Scratch projects that have not been published on the Scratch platform.</p>
 
         <ol class="f3">
@@ -25,6 +25,11 @@
 
                   <label for="caption" class="settings-label">Caption</label>
                   <debounce-input id="caption" class="settings-text" element="textarea" v-model="settings.caption"></debounce-input>
+                  <div class="i f5 dark-gray">
+                    <p>Anyone you share the link with will see the information you provide including title, caption, and project ID/URL. Do not include any personal information.</p>
+                    <p>This information is only transmitted via the link and not stored anywhere else. See the <nuxt-link to="/privacy">privacy page</nuxt-link> for more information.</p>
+                  </div>
+
 
                 </div>
 
@@ -165,11 +170,7 @@ export default {
 
   @import "~tachyons-sass/tachyons";
 
-  .main{
-    width: 35em;
-    max-width:calc(100% - 20px);
-    padding: 10px;
-  }
+
 
   .settings-label{
     @extend .b, .db, .mb2;
