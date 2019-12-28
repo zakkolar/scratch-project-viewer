@@ -39,7 +39,7 @@
 export default {
   head(){
     return {
-      title: this.title
+      title: this.title || 'Scratch Project Viewer'
     }
   },
   data() {
