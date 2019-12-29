@@ -12,7 +12,7 @@
     The source code for this site is available on <a href="https://github.com/zakkolar/scratch-project-viewer">GitHub</a>.
 
     <h2 class="f2">Contact</h2>
-    If you'd like to get in touch with the developer of this site (Zak Kolar), you can do so <a href="https://zak.io/contact/">here</a>.
+    If you'd like to get in touch, you can do so <a href="https://zak.io/contact/">here</a>.
 
   </div>
 </template>
