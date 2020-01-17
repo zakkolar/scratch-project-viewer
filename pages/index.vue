@@ -17,6 +17,10 @@
             <vue-tabs class="f4-l f5">
               <vue-tab name="Settings" :selected="true">
 
+                <div class="i f5 bg-washed-yellow ba b--yellow pa2 mb2">
+                  <p class="mt0">Anyone you share the link with will see the information you provide including title, caption, and project ID/URL. Do not include any personal information.</p>
+                  <p class="mb0">This information is only transmitted via the link and not stored anywhere else. See the <nuxt-link to="/privacy">privacy page</nuxt-link> for more information.</p>
+                </div>
 
                 <div class="w-50-ns w-100 fl ph3">
 
@@ -25,10 +29,6 @@
 
                   <label for="caption" class="settings-label">Caption</label>
                   <debounce-input id="caption" class="settings-text" element="textarea" v-model="settings.caption"></debounce-input>
-                  <div class="i f5 dark-gray">
-                    <p>Anyone you share the link with will see the information you provide including title, caption, and project ID/URL. Do not include any personal information.</p>
-                    <p>This information is only transmitted via the link and not stored anywhere else. See the <nuxt-link to="/privacy">privacy page</nuxt-link> for more information.</p>
-                  </div>
 
 
                 </div>
