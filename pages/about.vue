@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="f1 tc">About</h1>
-    <p>This site is a wrapper for <a href="https://forkphorus.github.io/">forkphorus</a> to make it easier to share Scratch projects that have not been published on the Scratch platform while customizing the way the project is displayed.</p>
+    <p>This site is a wrapper for <a href="https://forkphorus.github.io/">forkphorus</a> to make it easier to share Scratch projects that have not been published on the Scratch platform while customizing the way the project is displayed. It was created by <a href="https://zak.io">Zak Kolar</a>.</p>
 
     <h2 class="f2">forkphorus and phosphorus</h2>
     <p><a href="https://forkphorus.github.io/">forkphorus</a> is a project created to embed Scratch 3 projects outside of Scratch. It is a modification of <a href="https://phosphorus.github.io/">phosphorus</a>, which does the same thing with earlier versions of Scratch. Check out their repositories on GitHub for information about contributors to these projects. </p>
