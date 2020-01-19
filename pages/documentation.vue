@@ -101,7 +101,7 @@
           },
           {
             name: 'autoStart',
-            description: `Whether the project should start automatically (triggers green flag click). If the project controls are hidden, autostart is always true no matter what is set here.`,
+            description: `Whether the project should start automatically (triggers green flag click).`,
             type: `boolean`,
             default: `false`
           },
