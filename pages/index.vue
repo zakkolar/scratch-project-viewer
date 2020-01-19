@@ -3,7 +3,7 @@
 
           <h1 class="f1 tc">Scratch viewer</h1>
 
-        <p>This site, created from <a href="https://forkphorus.github.io/" target="_blank">forkphorus</a>, is designed to make it easy to share Scratch projects that have not been published on the Scratch platform.</p>
+        <p>This site, created from <a href="https://forkphorus.github.io/" target="_blank">forkphorus</a>, is designed to make it easy to share Scratch projects that have not been published on the Scratch platform. Use it to preview projects that are still works-in-progress or share final products without listing them publicly on the Scratch website.</p>
         <p>For advanced uses, such as generating many links at once, see the <nuxt-link to="/documentation">documentation</nuxt-link>.</p>
 
         <ol class="f3">
