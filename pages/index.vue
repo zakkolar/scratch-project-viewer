@@ -9,9 +9,10 @@
         <ol class="f3">
           <li>
             <label class="f3 db mv2 mh0 pa0" for="projectURL">Paste Scratch project URL</label>
-            <debounce-input id="projectURL" element="input" type="text" v-model="projectURL" :class="{'b--red bg-washed-red':projectURL && !projectID}" :placeholder="placeholder" class="code w-100 ba code b--black-20 pa2 center db ma0 bg-near-white f4-l f5-m f6" ></debounce-input>
+            <input id="projectURL" type="text" v-model="projectURL" :class="{'b--red bg-washed-red':projectURL && !projectID}" :placeholder="placeholder" class="code w-100 ba code b--black-20 pa2 center db ma0 bg-near-white f4-l f5-m f6" >
             <p class="f6 red i" v-if="projectURL && !projectID">URL should be in the format https://scratch.mit.edu/projects/[PROJECT ID]</p>
           </li>
+          <transition name="slide-fade">
           <li v-if="projectID">
             <p class="f3 db mv2 mh0 pa0">Customize viewer <i class="gray f4">(optional)</i></p>
 
@@ -26,10 +27,10 @@
                 <div class="w-50-ns w-100 fl ph3">
 
                   <label for="title" class="settings-label">Title</label>
-                  <debounce-input id="title" element="input" class="settings-text" v-model="settings.title"></debounce-input>
+                  <input id="title" class="settings-text" v-model="settings.title">
 
                   <label for="caption" class="settings-label">Caption</label>
-                  <debounce-input id="caption" class="settings-text" element="textarea" v-model="settings.caption"></debounce-input>
+                  <textarea id="caption" class="settings-text" v-model="settings.caption"></textarea>
 
 
                 </div>
@@ -39,11 +40,11 @@
 
                   <div class="w-50 fl ph3">
                     <label for="width" class="settings-label">Width</label>
-                    <debounce-input id="width" class="settings-text" element="input" v-model="settings.w"></debounce-input>
+                    <input id="width" class="settings-text" v-model="settings.w">
                   </div>
                   <div class="w-50 fl ph3">
                     <label for="height" class="settings-label">Height</label>
-                    <debounce-input id="height" class="settings-text" element="input" v-model="settings.h"></debounce-input>
+                    <input id="height" class="settings-text" v-model="settings.h">
                   </div>
 
 
@@ -67,7 +68,7 @@
 
                     <label for="backgroundColor" class="settings-label dt">
                       <div class="dtc v-mid">
-                        <debounce-input id="backgroundColor" class="settings-color" element="input" v-model="settings.backgroundColor" type="color"></debounce-input> Background color
+                        <input id="backgroundColor" class="settings-color" v-model="settings.backgroundColor" type="color"> Background color
                       </div>
                     </label>
 
@@ -76,7 +77,7 @@
 
 
                   <label for="textColor" class="settings-label">
-                    <debounce-input id="textColor" class="settings-color" element="input" v-model="settings.textColor" type="color"></debounce-input> Text color
+                    <input id="textColor" class="settings-color" v-model="settings.textColor" type="color"> Text color
                   </label>
 
 
@@ -91,10 +92,13 @@
             </vue-tabs>
             <div class="cb"></div>
           </li>
+          </transition>
+          <transition name="slide-fade">
           <li v-if="projectID">
             <p class="f3 db mv2 mh0 pa0">Share this link</p>
             <url-box :copy="completeUrl">{{completeUrl}}</url-box>
           </li>
+          </transition>
         </ol>
 
 
@@ -183,6 +187,18 @@ export default {
 
   .settings-color{
     @extend .input-reset, .bn, .h2, .w2, .pa0, .mb2, .dib;
+  }
+
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
   }
 
 </style>
