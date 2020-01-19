@@ -95,6 +95,9 @@ export default {
       }
     }
   },
+  beforeRouteUpdate(){
+    this.getUrlData();
+  },
 
   methods: {
     isURL(str) {
@@ -108,35 +111,51 @@ export default {
     },
     getUrlData() {
 
+      let paramString = location.hash;
+
+      if(paramString.substr(0,1)==='#'){
+        paramString = paramString.substr(1);
+      }
+
+      let paramParts = paramString.split("&");
+
+      let params = {};
+
+      for(let part of paramParts){
+        let split = part.split("=");
+        params[split[0]] = decodeURIComponent(split[1]);
+      }
 
 
-      this.caption = this.$route.query.caption || defaultSettings.caption;
-      this.title = this.$route.query.title || defaultSettings.title;
+      console.log(params);
 
-      this.backgroundColor = this.$route.query.backgroundColor || defaultSettings.backgroundColor;
-      this.textColor = this.$route.query.textColor || defaultSettings.textColor;
+      this.caption = params.caption || defaultSettings.caption;
+      this.title = params.title || defaultSettings.title;
 
-      this.baseWidth = parseInt(this.$route.query.w) || defaultSettings.w;
-      this.baseHeight = parseInt(this.$route.query.h) || defaultSettings.h;
+      this.backgroundColor = params.backgroundColor || defaultSettings.backgroundColor;
+      this.textColor = params.textColor || defaultSettings.textColor;
+
+      this.baseWidth = parseInt(params.w) || defaultSettings.w;
+      this.baseHeight = parseInt(params.h) || defaultSettings.h;
 
       this.ui = defaultSettings.ui;
-      if(this.$route.query.ui){
-        this.ui = this.$route.query.ui !== 'false';
+      if(params.ui){
+        this.ui = params.ui !== 'false';
       }
 
       this.autoStart = defaultSettings.autoStart;
-      if(this.$route.query['autoStart']){
-        this.autoStart = this.$route.query['autoStart'] === 'true';
+      if(params['autoStart']){
+        this.autoStart = params['autoStart'] === 'true';
       }
 
       this.showDownload = defaultSettings.showDownload;
-      if(this.$route.query['showDownload']){
-        this.showDownload = this.$route.query['showDownload'] !== 'false';
+      if(params['showDownload']){
+        this.showDownload = params['showDownload'] !== 'false';
       }
 
 
       // project
-      let project = this.$route.query.project;
+      let project = params.project;
       this.project = project;
       if (this.isURL(project)) {
         this.project = ExtractProjectId(project);

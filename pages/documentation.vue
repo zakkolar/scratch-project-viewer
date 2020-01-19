@@ -3,15 +3,15 @@
     <h1 class="f1 tc">Documentation</h1>
     <p>This documentation can be used for advanced customization of project sharing URLs. If you'd like to generate a link automatically, go to the <nuxt-link to="/">home page</nuxt-link>.</p>
 
-    <p>Scratch Project Viewer's customizations are all specified as parameters at the end of the viewer page URL. To add parameters, add a question mark to the end of the URL. Add the name of the parameter, an equal sign, and the value of the parameter. To specify multiple parameters, put an ampersand (<code class="inline-code">&amp;</code>) before the name of the next parameter. See an example below:</p>
+    <p>Scratch Project Viewer's customizations are all specified as parameters at the end of the viewer page URL. To add parameters, add a pound sign/hashtag (<code class="inline-code">#</code>) to the end of the URL. Add the name of the parameter, an equal sign, and the value of the parameter. To specify multiple parameters, put an ampersand (<code class="inline-code">&amp;</code>) before the name of the next parameter. See an example below:</p>
 
-    <url-box><span class="gray">{{viewerUrl}}</span><b>?</b>param1=value1<b>&amp;</b>param2=value2</url-box>
+    <url-box><span class="gray">{{viewerUrl}}</span><b>#</b>param1=value1<b>&amp;</b>param2=value2</url-box>
 
     <p>At a minimum, you need to specify the project ID or the full project URL with the <code class="inline-code">project</code> parameter. If you're using the full URL, be sure to escape the non-URL-safe characters (see <a href="#escaping-characters">below</a>).</p>
 
-    <url-box>{{viewerUrl}}?project=10128067</url-box>
+    <url-box>{{viewerUrl}}#project=10128067</url-box>
     <p class="tc">or</p>
-    <url-box>{{viewerUrl}}?project={{"https://scratch.mit.edu/projects/10128067" | urlSafe}}</url-box>
+    <url-box>{{viewerUrl}}#project={{"https://scratch.mit.edu/projects/10128067" | urlSafe}}</url-box>
 
     <h2 id="escaping-characters">Escaping characters</h2>
     <p>Some characters are not allowed in URLs and may confuse the browser if they're there. For these characters, certain codes are used in their place. For example, a space is represented by the code <code class="inline-code">%20</code></p>
@@ -131,10 +131,10 @@
         return `${this.baseUrl}/view`;
       },
       sheetsExample1() {
-        return`="${this.baseUrl}/view?project="&ENCODEURL(A2)`;
+        return`="${this.baseUrl}/view#project="&ENCODEURL(A2)`;
       },
       sheetsExample2() {
-        return`="${this.baseUrl}/view?project="&ENCODEURL(A2)&"&title="&ENCODEURL("My Cool Project")`;
+        return`="${this.baseUrl}/view#project="&ENCODEURL(A2)&"&title="&ENCODEURL("My Cool Project")`;
       }
     },
     filters:{

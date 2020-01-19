@@ -135,7 +135,7 @@ export default {
         }
       }
 
-      return `${this.baseUrl}/view?${params.join("&")}`;
+      return `${this.baseUrl}/view#${params.join("&")}`;
     },
     projectID(){
       if(!this.projectURL){
