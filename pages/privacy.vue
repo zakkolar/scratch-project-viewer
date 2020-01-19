@@ -1,6 +1,8 @@
 <template>
   <div>
     <h1 class="f1 tc">Privacy</h1>
+    <p class="bg-washed-yellow ba b--yellow pa2 mb2">Although the measures below are taken to protect your privacy on this site, do not include any personal/identifying information in the titles, captions, or any other settings on the pages you generate. Anyone you share the links with will be able to see any information you include.</p>
+
     <p>All information about the project and display settings (project URL/ID, caption, title, colors, etc.) is communicated directly to your web browser via the parameters set in the URL.</p>
     <div class="ml3 f5 mt0 ba b--dotted b--black-10">
       <p class="ma0 f6 pa1 dib bg-light-gray">Example:</p>
@@ -14,7 +16,7 @@
 
     <p>Scratch project data is stored where its creator saved it on Scratch's servers. When the project is viewed on this website, the data is transmitted directly between Scratch's servers and your browser. None of the data is stored outside of the Scratch server. It is not sent back to me or any third parties.</p>
 
-    <p>In technical terms, this is a static website generated with Nuxt.js and Vue. There is no backend server where data can be stored/retrieved. All content is rendered on the client side based on URL parameters using JavaScript. If you'd like to check out the source code, it's available on <a href="https://github.com/zakkolar/scratch-project-viewer">GitHub</a>. It implements forks of <a href="https://github.com/zakkolar/forkphorus">forkphorus</a> and <a href="https://github.com/zakkolar/sb-downloader">forkphorus/sb-downloader</a>.</p>
+    <p>In technical terms, this is a static website generated with Nuxt.js and Vue. All content is rendered on the client side based on URL parameters using JavaScript. The settings are passed as a URI fragment (<code>#</code>) instead of query parameter (<code>?</code>) to avoid being added to access logs. If you'd like to check out the source code, it's available on <a href="https://github.com/zakkolar/scratch-project-viewer">GitHub</a>. It implements forks of <a href="https://github.com/zakkolar/forkphorus">forkphorus</a> and <a href="https://github.com/zakkolar/sb-downloader">forkphorus/sb-downloader</a>.</p>
   </div>
 </template>
 <script>

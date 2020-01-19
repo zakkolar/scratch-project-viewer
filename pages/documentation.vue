@@ -1,6 +1,10 @@
 <template>
   <div>
     <h1 class="f1 tc">Documentation</h1>
+
+    <p class="bg-washed-yellow ba b--yellow pa2 mb2">Although there are <nuxt-link to="/privacy">measures taken to protect your privacy</nuxt-link> on this site, do not include any personal/identifying information in the titles, captions, or any other settings on the pages you generate. Anyone you share the links with will be able to see any information you include.</p>
+
+
     <p>This documentation can be used for advanced customization of project sharing URLs. If you'd like to generate a link automatically, go to the <nuxt-link to="/">home page</nuxt-link>.</p>
 
     <p>Scratch Project Viewer's customizations are all specified as parameters at the end of the viewer page URL. To add parameters, add a pound sign/hashtag (<code class="inline-code">#</code>) to the end of the URL. Add the name of the parameter, an equal sign, and the value of the parameter. To specify multiple parameters, put an ampersand (<code class="inline-code">&amp;</code>) before the name of the next parameter. See an example below:</p>
