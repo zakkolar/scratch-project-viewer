@@ -4,7 +4,7 @@
     <p>All information about the project and display settings (project URL/ID, caption, title, colors, etc.) is communicated directly to your web browser via the parameters set in the URL.</p>
     <div class="ml3 f5 mt0 ba b--dotted b--black-10">
       <p class="ma0 f6 pa1 dib bg-light-gray">Example:</p>
-      <p class="ma0 pa2 f6"><code>{{baseUrl}}/view?project=<b>10128067</b>&title=<b>My%20project</b></code></p>
+      <p class="ma0 pa2 f6"><code>{{baseUrl}}/view#project=<b>10128067</b>&title=<b>My%20project</b></code></p>
       <p class="ma0 pa2">In the above URL, <code>project=10128067</code> tells your web browser to load the project with the ID <code>10128067</code> from Scratch's servers.</p>
       <p class="ma0 pa2"><code>title=My%20project</code> tells your web browser to display the text &quot;My project&quot; in the space for the title. <code>%20</code> is a placeholder for the space character.</p>
       <p class="ma0 pa2">Changing either of these values in the URL will also cause corresponding changes on the page.</p>
