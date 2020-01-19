@@ -6,7 +6,7 @@
           <div id="projectEmbed" class="center tc">
             <div v-if="project">
               <iframe v-on:load="loaded" v-bind:src="'/forkphorus/embed.html?id='+project+'&auto-start='+autoStart+'&light-content=false&w='+baseWidth+'&h='+baseHeight" v-bind:width="width" allowfullscreen="true" allowtransparency="true" class="bn forkphorus-embed" v-bind:height="height"></iframe>
-              <div v-if="loading" class="absolute f1 pt4 top-0 w-100 left-0 bottom-0">Getting project...</div>
+              <div v-if="loading" class="">Getting project...</div>
             </div>
             <div v-else>
               Loading...
