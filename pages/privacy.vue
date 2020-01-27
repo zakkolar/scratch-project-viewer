@@ -25,6 +25,9 @@
       return {
         baseUrl: process.env.baseUrl
       }
+    },
+    head: {
+      title: "Privacy | Scratch Project Viewer"
     }
   }
 </script>
