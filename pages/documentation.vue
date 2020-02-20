@@ -27,6 +27,8 @@
     <p>You can specify as many parameters as you'd like (full list <a href="#parameters">below</a>). For example:</p>
     <url-box :copy="sheetsExample2">{{sheetsExample2}}</url-box>
 
+    <p>You can use this <a href="https://docs.google.com/spreadsheets/d/1tJ7lI3cEpN_A-CA0wj9cohnR8ZW8bfT_BTjrV5WLBqU/template/preview" target="_blank">Google Sheet</a> as a starting point. To make your own copy, click "use template" in the top right corner.</p>
+
 
     <h2 id="parameters">Parameters</h2>
     <table class="params-table">
