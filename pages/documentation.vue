@@ -67,6 +67,18 @@
   import UrlBox from "../components/UrlBox";
   export default {
     components: {UrlBox},
+    mounted: function()
+    {
+      if (this.$route.hash) {
+        setTimeout(() => this.scrollFix(this.$route.hash), 1)
+      }
+    },
+    methods: {
+      scrollFix: function(hashbang)
+      {
+        location.href = hashbang;
+      }
+    },
     data(){
       return {
         baseUrl: process.env.baseUrl,
