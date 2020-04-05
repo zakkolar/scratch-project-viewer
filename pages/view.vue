@@ -43,7 +43,13 @@ export default {
   layout:'viewer',
   head(){
     return {
-      title: this.title || 'Scratch Project Viewer'
+      title: this.title || 'Scratch Project Viewer',
+      meta:[
+        {
+          name:'robots',
+          content: 'noindex'
+        }
+      ]
     }
   },
   data() {
