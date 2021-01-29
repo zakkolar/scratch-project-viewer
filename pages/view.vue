@@ -15,7 +15,7 @@
           <p v-if="caption" class="measure center lh-copy f4 ba pa2 bg-black-05 b--black-20">{{caption}}</p>
           <div v-if="showDownload">
             <p v-if="downloadData && !downloadError" class="measure center lh-copy f4 pa2 tc">
-              <a :href="downloadData" v-if="downloadData" :download="downloadName" class="no-underline bg-green ph3 pv2 white grow">Download project</a>
+              <a :href="downloadData" v-if="downloadData" :download="`${title || downloadName}.${downloadExtension}`" class="no-underline bg-green ph3 pv2 white grow">Download project</a>
             </p>
             <div v-if="!downloadData && !downloadError" class="center measure">
               <div class="bg-washed-green ba b--dark-green f6 lh-copy overflow-y-hidden">
@@ -63,6 +63,7 @@ export default {
       project: null,
       downloadData: null,
       downloadName: null,
+      downloadExtension: null,
       showDownload: null,
       downloadError: false,
       backgroundColor: null,
@@ -214,11 +215,11 @@ export default {
             // Only display assets if there are some files to preview and they will be visible.
 
             const url = URL.createObjectURL(blob);
-            const filename = result.title + '.' + result.extension;
             const size = blob.size / 1024 / 1024;
 
             this.downloadData = url;
-            this.downloadName = filename;
+            this.downloadName = result.title;
+            this.downloadExtension = result.extension;
             this.downloadError = false;
           })
           .catch((e)=>{
